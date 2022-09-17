@@ -27,11 +27,7 @@ function Home({isAuthenticated} : {isAuthenticated: null | boolean}) {
                     method: 'POST',
                     body: JSON.stringify({code: code})
                 })
-                .then(response => response.json())
-                .then(token => {
-                    console.log(token)
-                    setLoading(false);
-                })
+                .then(() => window.location.replace('/profile'))
             }
         }
     },[isAuthenticated,searchParams,setSearchParams,navigate])

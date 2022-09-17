@@ -1,0 +1,105 @@
+.profile-intro {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.profile-intro img {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    object-fit: cover;
+    animation: titleAppear 1s;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.profile-intro h1 {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 55px;
+    animation: titleAppear 1s;
+}
+
+.profile-intro p {
+    animation: titleAppear 1s;
+}
+
+.profile-intro a {
+    animation: titleAppear 1s;
+    color: #fff;
+    font-weight: bold;
+    transition: linear 0.1s;
+}
+
+.profile-intro a:hover {
+    scale: 1.1;
+    color: #1ED760;
+}
+
+.wave-stats {
+    position: relative;
+    display: flex;
+    margin-top: 250px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.wave-stats-title {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 45px;
+    animation: titleAppear 1s;
+}
+
+.waves {
+    position: relative;
+    max-width: 800px;
+    height: 200px;
+    animation: titleAppear 1s;
+}
+
+.parallax > use {
+    animation: waveParallax 25s cubic-bezier(.55, .5, .45, .5) infinite alternate;
+}
+
+.parallax > use:nth-child(1) {
+    animation-delay: -2s;
+    animation-duration: 7s;
+}
+
+.parallax > use:nth-child(2) {
+    animation-delay: -3s;
+    animation-duration: 10s;
+}
+
+.parallax > use:nth-child(3) {
+    animation-delay: -4s;
+    animation-duration: 13s;
+}
+
+.parallax > use:nth-child(4) {
+    animation-delay: -6s;
+    animation-duration: 20s;
+}
+
+.wave-definition {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 50px;
+    text-align: center;
+}
+
+@keyframes waveParallax {
+    0% {
+        transform: translate3d(-90px,0,0);
+    }
+    100% {
+        transform: translate3d(80px,0,0);
+    }
+}

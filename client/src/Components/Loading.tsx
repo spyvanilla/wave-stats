@@ -14,7 +14,7 @@ function Loading({type} : {type: number}) {
             </div>
         ) : (
             <div className="small-loading">
-                <SyncLoader size={10} color={"#1DB954"} />
+                <SyncLoader size={20} color={"#1DB954"} />
             </div>
         )}
         </>

@@ -3,6 +3,7 @@ import {useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import ProfileIntro from '../../Components/ProfileIntro';
+import WaveStats from '../../Components/WaveStats';
 
 import './profile.css';
 
@@ -18,6 +19,7 @@ function Profile({isAuthenticated} : {isAuthenticated: null | boolean}) {
     return (
         <>
         <ProfileIntro />
+        <WaveStats />
         </>
     )
 }
