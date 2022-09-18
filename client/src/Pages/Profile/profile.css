@@ -8,7 +8,6 @@
     flex-direction: column;
     gap: 12px;
     text-align: center;
-    margin-bottom: 30px;
 }
 
 .profile-intro img {
@@ -45,11 +44,12 @@
 .wave-stats {
     position: relative;
     display: flex;
-    margin-top: 250px;
+    margin-top: 50px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 12px;
+    text-align: center;
 }
 
 .wave-stats-title {
@@ -58,48 +58,79 @@
     animation: titleAppear 1s;
 }
 
-.waves {
+.genre-wave {
     position: relative;
-    max-width: 800px;
-    height: 200px;
-    animation: titleAppear 1s;
+    background-position: center;
+    background-repeat: no-repeat;
+    aspect-ratio: 300/100;
+    background-size: cover;
+    width: 50%;
+    -webkit-filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.35));
+    filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.35));
+    animation: waveAppear 1s;
 }
 
-.parallax > use {
-    animation: waveParallax 25s cubic-bezier(.55, .5, .45, .5) infinite alternate;
+.wave-rock {
+    background-image: url(../../Assets/Svg/rock-waves.svg);
 }
 
-.parallax > use:nth-child(1) {
-    animation-delay: -2s;
-    animation-duration: 7s;
+.wave-pop {
+    background-image: url(../../Assets/Svg/pop-waves.svg);
 }
 
-.parallax > use:nth-child(2) {
-    animation-delay: -3s;
-    animation-duration: 10s;
+.wave-blues {
+    background-image: url(../../Assets/Svg/blues-waves.svg);
 }
 
-.parallax > use:nth-child(3) {
-    animation-delay: -4s;
-    animation-duration: 13s;
+.wave-bossanova {
+    background-image: url(../../Assets/Svg/bossanova-waves.svg);
 }
 
-.parallax > use:nth-child(4) {
-    animation-delay: -6s;
-    animation-duration: 20s;
+.wave-emo {
+    background-image: url(../../Assets/Svg/emo-waves.svg);
+}
+
+.wave-jazz {
+    background-image: url(../../Assets/Svg/jazz-waves.svg);
+}
+
+.wave-alternative {
+    background-image: url(../../Assets/Svg/alternative-waves.svg);
+}
+
+.wave-country {
+    background-image: url(../../Assets/Svg/country-waves.svg);
+}
+
+.wave-classical {
+    background-image: url(../../Assets/Svg/classical-waves.svg);
+}
+
+.wave-generic {
+    background-image: url(../../Assets/Svg/generic-waves.svg);
 }
 
 .wave-definition {
     font-family: 'Roboto Mono', monospace;
     font-size: 50px;
     text-align: center;
+    margin-top: 50px;
 }
 
-@keyframes waveParallax {
+@keyframes waveAppear {
     0% {
-        transform: translate3d(-90px,0,0);
+        opacity: 0;
     }
     100% {
-        transform: translate3d(80px,0,0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .genre-wave {
+        width: 80%;
+    }
+    .wave-definition {
+        font-size: 25px;
     }
 }
