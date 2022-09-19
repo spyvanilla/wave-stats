@@ -42,35 +42,4 @@ def get_top_artists():
         return {'genres': None}
 
     artists = requests.get(f'{API_URL}/me/top/artists?time_range=short_term', headers={'Authorization': f'Bearer {token}'}).json()['items']
-    genres = {}
-    generic = False # if top genre doesn't match any of the key genre words, it displays a generic wave in frontend
-
-    for artist in artists:
-        artist_genres = artist['genres']
-
-        for genre in artist_genres:
-            if genre in genres.keys():
-                genres[genre] = genres[genre]+1
-            else:
-                genres[genre] = 1
-
-    genres = dict(sorted(genres.items(), key=lambda item: item[1], reverse=True))
-    top_genre = None
-
-    for genre in genres.keys():
-        if top_genre is not None:
-            break
-
-        for key_genre in KEY_GENRE_WORDS:
-            if genre in key_genre:
-                top_genre = key_genre
-                break
-
-    if top_genre is None:
-        top_genre = ''.join(word.capitalize() for word in genres.keys().replace('-',' ').split())
-        generic = True
-
-    return {
-        'top_genre': top_genre,
-        'generic': generic
-    }
+    return {'data': artists}

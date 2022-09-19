@@ -2,6 +2,7 @@ import React from 'react';
 import {useState,useEffect} from 'react';
 
 import Loading from './Loading';
+import getTopGenre from '../Helpers/getTopGenre';
 
 function WaveStats() {
   const [genre,setGenre] = useState<any>(null);
@@ -12,8 +13,9 @@ function WaveStats() {
     fetch('/api/get-genres')
     .then(response => response.json())
     .then(data => {
-      setGenre(data.top_genre);
-      setGeneric(data.generic);
+      const [topGenre,isGeneric] = getTopGenre(data.data);
+      setGenre(topGenre);
+      setGeneric(isGeneric);
       setLoading(false);
     })
   },[])

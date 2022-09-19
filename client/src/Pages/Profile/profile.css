@@ -55,7 +55,6 @@
 .wave-stats-title {
     font-family: 'Roboto Mono', monospace;
     font-size: 45px;
-    animation: titleAppear 1s;
 }
 
 .genre-wave {
@@ -67,7 +66,6 @@
     width: 50%;
     -webkit-filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.35));
     filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.35));
-    animation: waveAppear 1s;
 }
 
 .wave-rock {
@@ -117,13 +115,11 @@
     margin-top: 50px;
 }
 
-@keyframes waveAppear {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+.genre-indices {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
 }
 
 @media (max-width: 768px) {
