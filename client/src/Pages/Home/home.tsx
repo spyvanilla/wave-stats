@@ -39,11 +39,13 @@ function Home({isAuthenticated} : {isAuthenticated: null | boolean}) {
     return (
         <>
         {loading === true ? <Loading type={1} /> : (
+            <>
             <div className="home-background">
                 <h1>Welcome to <span>Wave Stats</span></h1>
                 <h2>Analyse your wave status in spotify!</h2>
                 <button onClick={handleClick}>Get Started</button>
             </div>
+            </>
         )}
         </>
     )

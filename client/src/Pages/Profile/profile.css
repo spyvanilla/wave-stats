@@ -41,6 +41,22 @@
     color: #1ED760;
 }
 
+.profile-intro button {
+    animation: titleAppear 1s;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    transition: linear 0.1s;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.profile-intro button:hover {
+    color: rgb(204, 34, 34);
+    scale: 1.1;
+}
+
 .wave-stats {
     position: relative;
     display: flex;
@@ -136,6 +152,7 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+    margin-bottom: 50px;
 }
 
 .display-items {
@@ -170,6 +187,15 @@
 
 .top-track-big-image:hover {
     scale: 1.1;
+}
+
+.hidden {
+    opacity: 0;
+    transition: all 2s;
+}
+
+.shown {
+    opacity: 1;
 }
 
 @media (max-width: 768px) {

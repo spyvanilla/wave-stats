@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState,useEffect} from 'react';
+import {useInView} from 'react-intersection-observer';
 
 import Loading from './Loading';
 import getTopGenre from '../Helpers/getTopGenre';
@@ -8,6 +9,7 @@ function WaveStats() {
   const [genre,setGenre] = useState<any>(null);
   const [generic,setGeneric] = useState(false);
   const [loading,setLoading] = useState(true);
+  const {ref,inView} = useInView({threshold: 0});
 
   useEffect(() => {
     fetch('/api/get-genres')
@@ -23,7 +25,7 @@ function WaveStats() {
   return (
     <>
     {loading === true ? <Loading type={2} /> : (
-      <section className="wave-stats">
+      <section className={inView === true ? "wave-stats hidden shown" : "wave-stats hidden"} ref={ref}>
         <section style={{position: 'relative'}}>
           <h2 className="wave-stats-title">Your Wave Stats</h2>
         </section>

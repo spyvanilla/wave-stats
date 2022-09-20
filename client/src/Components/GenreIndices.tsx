@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState,useEffect} from 'react';
+import {useInView} from 'react-intersection-observer';
 
 import Loading from './Loading'
 import sortGenres from '../Helpers/sortGenres';
@@ -9,6 +10,7 @@ import {ResponsiveContainer,RadarChart,PolarGrid,PolarAngleAxis,PolarRadiusAxis,
 function GenreIndices() {
     const [genres,setGenres] = useState<any>(null);
     const [loading,setLoading] = useState(true);
+    const {ref,inView} = useInView({threshold: 0});
 
     useEffect(() => {
         fetch('/api/get-genres')
@@ -23,7 +25,7 @@ function GenreIndices() {
     return (
         <>
         {loading === true ? <Loading type={2} /> : (
-            <section className="genre-indices">
+            <section className={inView === true ? "genre-indices hidden shown" : "genre-indices hidden"} ref={ref}>
                 <h2 className="genre-indices-title">Genres you heard the most</h2>
                 <ResponsiveContainer width="100%" aspect={2}>
                     <RadarChart data={genres.slice(0,6)}>

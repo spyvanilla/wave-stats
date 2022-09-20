@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState,useEffect} from 'react';
+import {useInView} from 'react-intersection-observer';
 
 import Loading from './Loading';
 
@@ -7,6 +8,7 @@ function FavoriteItems() {
     const [topArtists,setTopArtists] = useState<any>(null);
     const [topTracks,setTopTracks] = useState<any>(null);
     const [loading,setLoading] = useState(true);
+    const {ref,inView} = useInView({threshold: 0});
 
     useEffect(() => {
         fetch('/api/get-top-items')
@@ -21,7 +23,7 @@ function FavoriteItems() {
     return (
         <>
         {loading === true ? <Loading type={2} /> : (
-            <section className="favorite-items">
+            <section className={inView === true ? "favorite-items hidden shown" : "favorite-items hidden"} ref={ref}>
                 <h2 className="wave-stats-title">Your Top Artists</h2>
                 <div className="display-items">
                 {topArtists.slice(0,5).map((artist: any, index: number) => {
