@@ -42,7 +42,7 @@ const getTopGenre = (data: any) => {
     })
 
     if (topGenre === null) {
-        let firstGenre = sortedGenres[0][0];
+        let firstGenre = sortedGenres[0][0].replace('-',' ').split(' ');
 
         firstGenre.forEach((wordToCapitalize: string, index: number) => {
             wordToCapitalize = wordToCapitalize.charAt(0).toUpperCase() + wordToCapitalize.slice(1);

@@ -4,40 +4,7 @@ import {useState,useEffect} from 'react';
 import Loading from './Loading'
 import sortGenres from '../Helpers/sortGenres';
 
-import {RadarChart,PolarGrid,PolarAngleAxis,PolarRadiusAxis,Radar,Tooltip,Legend} from 'recharts';
-
-const data = [
-    {
-        "subject": "Math",
-        "A": 120,
-        "fullMark": 150
-    },
-    {
-        "subject": "Chinese",
-        "A": 98,
-        "fullMark": 150
-    },
-    {
-        "subject": "English",
-        "A": 86,
-        "fullMark": 150
-    },
-    {
-        "subject": "Geography",
-        "A": 99,
-        "fullMark": 150
-    },
-    {
-        "subject": "Physics",
-        "A": 85,
-        "fullMark": 150
-    },
-    {
-        "subject": "History",
-        "A": 65,
-        "fullMark": 150
-    }
-]
+import {ResponsiveContainer,RadarChart,PolarGrid,PolarAngleAxis,PolarRadiusAxis,Radar,Tooltip} from 'recharts';
 
 function GenreIndices() {
     const [genres,setGenres] = useState<any>(null);
@@ -47,7 +14,8 @@ function GenreIndices() {
         fetch('/api/get-genres')
         .then(response => response.json())
         .then(data => {
-            sortGenres(data.data);
+            const genreData = sortGenres(data.data);
+            setGenres(genreData);
             setLoading(false);
         })
     },[])
@@ -56,13 +24,16 @@ function GenreIndices() {
         <>
         {loading === true ? <Loading type={2} /> : (
             <section className="genre-indices">
-                <RadarChart outerRadius="90%" width={730} height={600} data={data}>
-                    <PolarGrid />
-                    <PolarAngleAxis dataKey="subject" tick={{fill: "#fff"}} />
-                    <PolarRadiusAxis angle={30} domain={[0, 150]} />
-                    <Radar name="Mike" dataKey="A" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
-                    <Legend />
-                </RadarChart>
+                <h2 className="genre-indices-title">Genres you heard the most</h2>
+                <ResponsiveContainer width="100%" aspect={2}>
+                    <RadarChart data={genres.slice(0,6)}>
+                        <PolarGrid />
+                        <PolarAngleAxis dataKey="genre" tick={{fill: "#fff"}} />
+                        <PolarRadiusAxis angle={30} domain={[0, 10]} />
+                        <Radar name="Wave Indice" dataKey="quantity" stroke="#1ED760" fill="#1ED760" fillOpacity={0.6} />
+                        <Tooltip contentStyle={{backgroundColor: "#303030"}} />
+                    </RadarChart>
+                </ResponsiveContainer>
             </section>
         )}
         </>

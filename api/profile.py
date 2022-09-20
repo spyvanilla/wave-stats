@@ -8,8 +8,6 @@ profile = Blueprint('profile', __name__)
 
 API_URL = 'https://api.spotify.com/v1'
 
-KEY_GENRE_WORDS = ['rock','pop','blues','bossanova','emo','jazz','alternative','country','classical']
-
 @profile.route('/get-main-info')
 def get_main_info():
     token = get_token()
@@ -43,3 +41,14 @@ def get_top_artists():
 
     artists = requests.get(f'{API_URL}/me/top/artists?time_range=short_term', headers={'Authorization': f'Bearer {token}'}).json()['items']
     return {'data': artists}
+
+@profile.route('get-top-items')
+def get_top_items():
+    token = get_token()
+
+    if token is None:
+        return {'items': None}
+
+    artists = requests.get(f'{API_URL}/me/top/artists?time_range=short_term', headers={'Authorization': f'Bearer {token}'}).json()['items']
+    tracks = requests.get(f'{API_URL}/me/tracks?time_range=short_term', headers={'Authorization': f'Bearer {token}'}).json()['items']
+    return {'artists': artists, 'tracks': tracks}

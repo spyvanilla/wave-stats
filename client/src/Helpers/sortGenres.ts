@@ -1,11 +1,12 @@
 const sortGenres = (data: any) => {
-    let genres: any = {};
+    let genres: any = [];
+    let genreCount: any = {};
 
     data.forEach((artist: any) => {
         let artistGenres = artist['genres'];
 
         artistGenres.forEach((genre: string) => {
-            let capitalizedGenre: any = genre.split(' ');
+            let capitalizedGenre: any = genre.replace('-',' ').split(' ');
 
             capitalizedGenre.forEach((wordToCapitalize: string, index: number) => {
                 wordToCapitalize = wordToCapitalize.charAt(0).toUpperCase() + wordToCapitalize.slice(1);
@@ -13,16 +14,24 @@ const sortGenres = (data: any) => {
             })
             capitalizedGenre = capitalizedGenre.join(' ');
 
-            if (capitalizedGenre in genres) {
-                genres[capitalizedGenre] = genres[capitalizedGenre]+1;
+            if (capitalizedGenre in genreCount) {
+                genreCount[capitalizedGenre] = genreCount[capitalizedGenre]+1;
             }
             else {
-                genres[capitalizedGenre] = 1;
+                genreCount[capitalizedGenre] = 1;
             }
         })
     })
 
-    console.log(genres);
+    for (const genreKey in genreCount) {
+        genres.push({genre: genreKey, quantity: genreCount[genreKey]});
+    }
+
+    genres.sort((a: any, b: any) => {
+        return b[1] - a[1];
+    })
+
+    return genres;
 }
 
 export default sortGenres;
