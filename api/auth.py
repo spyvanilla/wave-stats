@@ -27,7 +27,13 @@ def get_token():
         'client_secret': CLIENT_SECRET
     }
 
-    new_token = requests.post(f'https://accounts.spotify.com/api/token', data=data).json()['access_token']
+    try:
+        new_token = requests.post(f'https://accounts.spotify.com/api/token', data=data).json()['access_token']
+    except KeyError:
+        session.pop('token', None)
+        session.pop('refresh_token', None)
+        return None
+
     session['token'] = new_token
     return new_token
 
