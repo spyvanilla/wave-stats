@@ -15,9 +15,11 @@ function WaveStats() {
     fetch('/api/get-genres')
     .then(response => response.json())
     .then(data => {
-      const [topGenre,isGeneric] = getTopGenre(data.data);
-      setGenre(topGenre);
-      setGeneric(isGeneric);
+      if (data.data.length > 0) {
+        const [topGenre,isGeneric] = getTopGenre(data.data);
+        setGenre(topGenre);
+        setGeneric(isGeneric);
+      }
       setLoading(false);
     })
   },[])
@@ -25,13 +27,17 @@ function WaveStats() {
   return (
     <>
     {loading === true ? <Loading type={2} /> : (
-      <section className={inView === true ? "wave-stats hidden shown" : "wave-stats hidden"} ref={ref}>
-        <section style={{position: 'relative'}}>
-          <h2 className="wave-stats-title">Your Wave Stats</h2>
+      <>
+      {genre === null ? '' : (
+        <section className={inView === true ? "wave-stats hidden shown" : "wave-stats hidden"} ref={ref}>
+          <section style={{position: 'relative'}}>
+            <h2 className="wave-stats-title">Your Wave Stats</h2>
+          </section>
+          <div className={`genre-wave wave-${generic === true ? 'generic' : genre} wave-hidden`}></div>
+          <h2 className="wave-definition">Your wave is: {genre.charAt(0).toUpperCase() + genre.slice(1)}</h2>
         </section>
-        <div className={`genre-wave wave-${generic === true ? 'generic' : genre} wave-hidden`}></div>
-        <h2 className="wave-definition">Your wave today is: {genre.charAt(0).toUpperCase() + genre.slice(1)}</h2>
-      </section>
+      )}
+      </>
     )}
     </>
   )

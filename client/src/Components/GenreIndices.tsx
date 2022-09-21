@@ -16,8 +16,10 @@ function GenreIndices() {
         fetch('/api/get-genres')
         .then(response => response.json())
         .then(data => {
-            const genreData = sortGenres(data.data);
-            setGenres(genreData);
+            if (data.data.length > 0) {
+                const genreData = sortGenres(data.data);
+                setGenres(genreData);
+            }
             setLoading(false);
         })
     },[])
@@ -25,18 +27,22 @@ function GenreIndices() {
     return (
         <>
         {loading === true ? <Loading type={2} /> : (
-            <section className={inView === true ? "genre-indices hidden shown" : "genre-indices hidden"} ref={ref}>
-                <h2 className="genre-indices-title">Genres you heard the most</h2>
-                <ResponsiveContainer width="100%" aspect={2}>
-                    <RadarChart data={genres.slice(0,6)}>
-                        <PolarGrid />
-                        <PolarAngleAxis dataKey="genre" tick={{fill: "#fff"}} />
-                        <PolarRadiusAxis angle={30} domain={[0, 10]} />
-                        <Radar name="Wave Indice" dataKey="quantity" stroke="#1ED760" fill="#1ED760" fillOpacity={0.6} />
-                        <Tooltip contentStyle={{backgroundColor: "#303030"}} />
-                    </RadarChart>
-                </ResponsiveContainer>
-            </section>
+            <>
+            {genres === null ? '' : (
+                <section className={inView === true ? "genre-indices hidden shown" : "genre-indices hidden"} ref={ref}>
+                    <h2 className="genre-indices-title">Genres you heard the most</h2>
+                    <ResponsiveContainer width="100%" aspect={2}>
+                        <RadarChart data={genres.slice(0,6)}>
+                            <PolarGrid />
+                            <PolarAngleAxis dataKey="genre" tick={{fill: "#fff"}} />
+                            <PolarRadiusAxis angle={30} domain={[0, 10]} />
+                            <Radar name="Wave Indice" dataKey="quantity" stroke="#1ED760" fill="#1ED760" fillOpacity={0.6} />
+                            <Tooltip contentStyle={{backgroundColor: "#303030"}} />
+                        </RadarChart>
+                    </ResponsiveContainer>
+                </section>
+            )}
+            </>
         )}
         </>
     )

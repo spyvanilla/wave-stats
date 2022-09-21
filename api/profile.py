@@ -39,7 +39,7 @@ def get_top_artists():
     if token is None:
         return {'genres': None}
 
-    artists = requests.get(f'{API_URL}/me/top/artists?time_range=short_term', headers={'Authorization': f'Bearer {token}'}).json()['items']
+    artists = requests.get(f'{API_URL}/me/top/artists?time_range=long_term', headers={'Authorization': f'Bearer {token}'}).json()['items']
     return {'data': artists}
 
 @profile.route('get-top-items')
@@ -49,6 +49,6 @@ def get_top_items():
     if token is None:
         return {'items': None}
 
-    artists = requests.get(f'{API_URL}/me/top/artists?time_range=short_term', headers={'Authorization': f'Bearer {token}'}).json()['items']
-    tracks = requests.get(f'{API_URL}/me/tracks?time_range=short_term', headers={'Authorization': f'Bearer {token}'}).json()['items']
+    artists = requests.get(f'{API_URL}/me/top/artists?time_range=long_term', headers={'Authorization': f'Bearer {token}'}).json()['items']
+    tracks = requests.get(f'{API_URL}/me/tracks?time_range=long_term', headers={'Authorization': f'Bearer {token}'}).json()['items']
     return {'artists': artists, 'tracks': tracks}
