@@ -2,6 +2,7 @@ import json
 import requests
 
 from flask import Blueprint, session, redirect, request
+from flask_cors import cross_origin
 
 auth = Blueprint('auth', __name__)
 
@@ -31,10 +32,12 @@ def get_token():
     return new_token
 
 @auth.route('/authorize')
+@cross_origin()
 def authorize():
     return redirect(f'https://accounts.spotify.com/authorize?client_id={CLIENT_ID}&redirect_uri={REDIRECT_URI}&scope={SCOPES}&response_type=code', code=302)
 
 @auth.route('/save-code', methods=['POST'])
+@cross_origin()
 def save_code():
     code = json.loads(request.data)['code']
 
@@ -53,10 +56,12 @@ def save_code():
     return {'token': True}
 
 @auth.route('/is-authenticated')
+@cross_origin()
 def is_authenticated():
     return {'authenticated': True if session.get('token') else False}
 
 @auth.route('/erase-profile')
+@cross_origin()
 def erase_profile():
     session.pop('token', None)
     session.pop('refresh_token', None)

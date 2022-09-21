@@ -3,6 +3,7 @@ import json
 import redis
 from flask import Flask
 from flask_session import Session
+from flask_cors import CORS
 
 sess = Session()
 
@@ -14,7 +15,7 @@ def create_app():
         REDIS_PORT = data['REDIS_PORT']
         REDIS_PASSWORD = data['REDIS_PASSWORD']
 
-    app = Flask(__name__)
+    app = Flask(__name__, static_folder='../client/build', static_url_path='')
     r = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, password=REDIS_PASSWORD)
 
     app.config['SECRET_KEY'] = SECRET_KEY
@@ -22,6 +23,7 @@ def create_app():
     app.config['SESSION_REDIS'] = r
 
     sess.init_app(app)
+    CORS(app)
 
     from .auth import auth
     from .profile import profile
