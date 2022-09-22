@@ -24,7 +24,7 @@ function CurrentTrack() {
                 <div className="current-track">
                     <h2>Listening to:</h2>
                     <a href={currentTrack.item.external_urls.spotify}>
-                        <img src={currentTrack.item.album.images.url} alt={currentTrack.item.name}></img>
+                        <img src={currentTrack.item.album.images[0].url} alt={currentTrack.item.name}></img>
                     </a>
                     <h2>{currentTrack.item.name}</h2>
                     <h3>{currentTrack.item.artists[0].name}</h3>
