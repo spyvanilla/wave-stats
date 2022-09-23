@@ -11,7 +11,7 @@ Analyse your wave status in spotify!
 Install the requirements in the ```requirements.txt``` file in the root directory, then go to client directory and run ```npm install```. After that, create a ```credentials.json``` file in the root directory and create the following values:
 
 - ```SECRET_KEY``` - Any value you want, but is recommended to generate one with a safe method
-- ```REDIS_HOST``` - The url of the redis instance you're using
+- ```REDIS_HOST``` - The host of the redis instance you're using
 - ```REDIS_PASSWORD``` - The password of the redis instance you're using
 - ```REDIS_PORT``` - The port of the redis instance you're using
 
