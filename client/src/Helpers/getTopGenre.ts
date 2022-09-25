@@ -1,4 +1,4 @@
-const keyGenreWords = ['rock','pop','blues','bossa-nova','emo','jazz','alternative','country','classical']
+const keyGenreWords = ['rock','pop','blues','bossa-nova','emo','jazz','alternative','country','classical','rap'];
 
 const getTopGenre = (data: any) => {
     let genres: any = {};
