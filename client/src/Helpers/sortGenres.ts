@@ -6,13 +6,13 @@ const sortGenres = (data: any) => {
         let artistGenres = artist['genres'];
 
         artistGenres.forEach((genre: string) => {
-            let capitalizedGenre: any = genre.replace('-',' ').split(' ');
+            let capitalizedGenre: any = genre.split('-');
 
             capitalizedGenre.forEach((wordToCapitalize: string, index: number) => {
                 wordToCapitalize = wordToCapitalize.charAt(0).toUpperCase() + wordToCapitalize.slice(1);
                 capitalizedGenre[index] = wordToCapitalize;
             })
-            capitalizedGenre = capitalizedGenre.join(' ');
+            capitalizedGenre = capitalizedGenre.join('-');
 
             if (capitalizedGenre in genreCount) {
                 genreCount[capitalizedGenre] = genreCount[capitalizedGenre]+1;

@@ -33,8 +33,8 @@ function WaveStats() {
           <section style={{position: 'relative'}}>
             <h2 className="wave-stats-title">Your Wave Stats</h2>
           </section>
-          <div className={`genre-wave wave-${generic === true ? 'generic' : genre} wave-hidden`}></div>
-          <h2 className="wave-definition">Your wave is: {genre.charAt(0).toUpperCase() + genre.slice(1)}</h2>
+          <div className={`genre-wave wave-${generic === true ? 'generic' : genre}`}></div>
+          <h2 className="wave-definition">Your wave is: {(genre.charAt(0).toUpperCase() + genre.slice(1)).replace('-','-')}</h2>
         </section>
       )}
       </>

@@ -65,12 +65,7 @@
     flex-direction: column;
     margin-top: 50px;
     animation: simpleAppear 1s;
-    cursor: pointer;
     transition: linear 0.1s;
-}
-
-.current-track:hover {
-    scale: 1.1;
 }
 
 .current-track img {
@@ -79,6 +74,12 @@
     border-radius: 10px;
     object-fit: cover;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    cursor: pointer;
+    transition: linear 0.1s;
+}
+
+.current-track img:hover {
+    scale: 1.1;
 }
 
 .wave-stats {
@@ -120,8 +121,8 @@
     background-image: url(../../Assets/Svg/blues-waves.svg);
 }
 
-.wave-bossanova {
-    background-image: url(../../Assets/Svg/bossanova-waves.svg);
+.wave-bossa-nova {
+    background-image: url(../../Assets/Svg/bossa-nova-waves.svg);
 }
 
 .wave-emo {
@@ -142,6 +143,10 @@
 
 .wave-classical {
     background-image: url(../../Assets/Svg/classical-waves.svg);
+}
+
+.wave-rap {
+    background-image: url(../../Assets/Svg/rap-waves.svg);
 }
 
 .wave-generic {
