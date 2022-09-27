@@ -34,7 +34,7 @@ const getTopGenre = (data: any) => {
         }
 
         keyGenreWords.forEach((keyGenre: string) => {
-            if (keyGenre.includes(genre[0])) {
+            if (genre[0].includes(keyGenre)) {
                 topGenre = keyGenre;
                 return;
             }
@@ -48,7 +48,13 @@ const getTopGenre = (data: any) => {
             wordToCapitalize = wordToCapitalize.charAt(0).toUpperCase() + wordToCapitalize.slice(1);
             firstGenre[index] = wordToCapitalize;
         })
-        firstGenre = firstGenre.join(' ');
+
+        if (firstGenre.length === 1) {
+            firstGenre = firstGenre[0];
+        }
+        else {
+            firstGenre = firstGenre.join(' ');
+        }
 
         if (firstGenre in genres) {
             genres[firstGenre] = genres[firstGenre]+1;
@@ -57,7 +63,8 @@ const getTopGenre = (data: any) => {
             genres[firstGenre] = 1;
         }
 
-        topGenre = firstGenre.join(' ');
+        generic = true;
+        topGenre = firstGenre;
     }
 
     return [topGenre,generic];
