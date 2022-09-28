@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState,useEffect} from 'react';
+import {isMobile} from 'react-device-detect';
 
 import Loading from './Loading';
 
@@ -35,11 +36,11 @@ function ProfileIntro() {
         <>
         {loading === true ? <Loading type={2} /> : (
             <section className="profile-intro">
-                <img src={withImage === true ? profile.images[0].url : noProfile} alt={profile.display_name}></img>
-                <h1>{profile.display_name}</h1>
-                <p>{profile.followers.total} followers</p>
-                <a href={profile.external_urls.spotify} target="_blank" rel="noopener noreferrer"><i><FontAwesomeIcon icon={faSpotify} /></i> See the profile on spotify</a>
-                <button onClick={eraseProfile}>Erase profile</button>
+                <img src={withImage === true ? profile.images[0].url : noProfile} alt={profile.display_name} className={isMobile === true ? "mobile-appear" : "desktop-appear"}></img>
+                <h1 className={isMobile === true ? "mobile-appear" : "desktop-appear"}>{profile.display_name}</h1>
+                <p className={isMobile === true ? "mobile-appear" : "desktop-appear"}>{profile.followers.total} followers</p>
+                <a href={profile.external_urls.spotify} target="_blank" rel="noopener noreferrer" className={isMobile === true ? "mobile-appear" : "desktop-appear"}><i><FontAwesomeIcon icon={faSpotify} /></i> See the profile on spotify</a>
+                <button onClick={eraseProfile} className={isMobile === true ? "mobile-appear" : "desktop-appear"}>Erase profile</button>
             </section>
         )}
         </>

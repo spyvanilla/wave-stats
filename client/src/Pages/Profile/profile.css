@@ -15,22 +15,15 @@
     height: 300px;
     border-radius: 50%;
     object-fit: cover;
-    animation: titleAppear 1s;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .profile-intro h1 {
     font-family: 'Roboto Mono', monospace;
     font-size: 55px;
-    animation: titleAppear 1s;
-}
-
-.profile-intro p {
-    animation: titleAppear 1s;
 }
 
 .profile-intro a {
-    animation: titleAppear 1s;
     color: #fff;
     font-weight: bold;
     transition: linear 0.1s;
@@ -42,7 +35,6 @@
 }
 
 .profile-intro button {
-    animation: titleAppear 1s;
     border: none;
     background-color: transparent;
     color: #fff;

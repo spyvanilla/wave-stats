@@ -12,15 +12,10 @@
 
 .home-background h1 {
     font-size: 60px;
-    animation: titleAppear 1s;
 }
 
 .home-background h1 span {
     color: #1ED760;
-}
-
-.home-background h2 {
-    animation: titleAppear 1s;
 }
 
 .home-background button {
@@ -31,7 +26,6 @@
     color: #fff;
     font-weight: bold;
     width: 140px;
-    animation: titleAppear 1s;
     cursor: pointer;
     transition: linear 0.1s;
 }

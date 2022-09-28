@@ -30,3 +30,11 @@ body {
     justify-content: center;
     margin-top: 25px;
 }
+
+.desktop-appear {
+    animation: titleAppear 1s;
+}
+
+.mobile-appear {
+    animation: simpleAppear 1s;
+}

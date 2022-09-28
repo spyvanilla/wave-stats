@@ -1,6 +1,7 @@
 import React from 'react';
 import {useState,useEffect} from 'react';
 import {useNavigate,useSearchParams} from 'react-router-dom';
+import {isMobile} from 'react-device-detect';
 
 import Loading from '../../Components/Loading';
 
@@ -41,9 +42,9 @@ function Home({isAuthenticated} : {isAuthenticated: null | boolean}) {
         {loading === true ? <Loading type={1} /> : (
             <>
             <div className="home-background">
-                <h1>Welcome to <span>Wave Stats</span></h1>
-                <h2>Analyse your wave status in spotify!</h2>
-                <button onClick={handleClick}>Get Started</button>
+                <h1 className={isMobile === true ? "mobile-appear" : "desktop-appear"}>Welcome to <span>Wave Stats</span></h1>
+                <h2 className={isMobile === true ? "mobile-appear" : "desktop-appear"}>Analyse your wave status in spotify!</h2>
+                <button className={isMobile === true ? "mobile-appear" : "desktop-appear"} onClick={handleClick}>Get Started</button>
             </div>
             </>
         )}
