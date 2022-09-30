@@ -14,10 +14,16 @@ with open('credentials.json', 'r') as f:
     SCOPES = data['SCOPES']
 
 def get_token():
+    """
+    This function refreshes the spotify token for every request the user makes
+    using the spotify refresh token created when the user authenticates with spotify
+    account, because the token only lasts for one hour
+    """
+
     token = session.get('token')
     refresh_token = session.get('refresh_token')
 
-    if token is None:
+    if token is None: # User didn't authenticate
         return None
 
     data = {
@@ -29,7 +35,9 @@ def get_token():
 
     try:
         new_token = requests.post(f'https://accounts.spotify.com/api/token', data=data).json()['access_token']
-    except KeyError:
+        # Token refresh that happens with every request the user makes
+
+    except KeyError: # User took off app's permission to access data from their spotify account
         session.pop('token', None)
         session.pop('refresh_token', None)
         return None

@@ -30,7 +30,7 @@ def get_current_track():
 
     try:
         current_track = requests.get(f'{API_URL}/me/player/currently-playing', headers={'Authorization': f'Bearer {token}'}).json()
-    except Exception:
+    except Exception: # Spotify api throws a 204 response code
         return {'current_track': None}
 
     return {'current_track': current_track}
