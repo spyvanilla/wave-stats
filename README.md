@@ -1,6 +1,12 @@
 # Wave Stats
 Analyse your wave status in spotify!
 
+# Introduction
+Welcome to Wave Stats, learn more about your musical preferences!
+
+![Wave Stats](imgs/wave-stats.png)
+![Genre Indices](imgs/genre-indices.png)
+
 # Technologies used
 - React: https://reactjs.org
 - Typescript: https://www.typescriptlang.org
