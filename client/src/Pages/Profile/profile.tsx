@@ -1,5 +1,5 @@
 import React from 'react';
-import {useEffect} from 'react';
+import {useState,useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import ProfileIntro from '../../Components/ProfileIntro';
@@ -10,22 +10,29 @@ import TopItems from '../../Components/TopItems';
 
 import './profile.css';
 
-function Profile({isAuthenticated} : {isAuthenticated: null | boolean}) {
+function Profile({isAuthenticated, setIsAuthenticated} : {isAuthenticated: null | boolean, setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean | null>>}) {
+    const [permissionError,setPermissionError] = useState<null | boolean>(null);
+    // Checks if the user took off app's permission to access their spotify data
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (!isAuthenticated) {
+        if (!isAuthenticated || permissionError) {
+            setIsAuthenticated(false);
             return navigate('/');
         }
-    },[isAuthenticated,navigate])
+    },[permissionError,isAuthenticated,setIsAuthenticated,navigate])
 
     return (
         <>
-        <ProfileIntro />
-        <CurrentTrack />
-        <WaveStats />
-        <GenreIndices />
-        <TopItems />
+        <ProfileIntro setPermissionError={setPermissionError} />
+        {permissionError === true || permissionError === null ? '' : (
+            <>
+            <CurrentTrack />
+            <WaveStats />
+            <GenreIndices />
+            <TopItems />
+            </>
+        )}
         </>
     )
 }

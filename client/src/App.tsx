@@ -26,7 +26,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home isAuthenticated={isAuthenticated} />}></Route>
-          <Route path="/profile" element={<Profile isAuthenticated={isAuthenticated} />}></Route>
+          <Route path="/profile" element={<Profile isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} />}></Route>
         </Routes>
       </Router>
     )}
