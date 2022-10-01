@@ -1,9 +1,12 @@
 const sortGenres = (data: any) => {
+    // Data contains a json object from spotify api with the user's top artists
     let genres: any = [];
     let genreCount: any = {};
+    // genreCount is responsible for counting the genres
+    // before adding then to the genres array
 
     data.forEach((artist: any) => {
-        let artistGenres = artist['genres'];
+        let artistGenres = artist['genres']; // Each artist has an array of musical genres
 
         artistGenres.forEach((genre: string) => {
             let capitalizedGenre: any = genre.split('-');
@@ -13,6 +16,8 @@ const sortGenres = (data: any) => {
                 capitalizedGenre[index] = wordToCapitalize;
             })
             capitalizedGenre = capitalizedGenre.join('-');
+            // This part is responsible for formatting the genre strings
+            // before adding then to the genreCount object
 
             if (capitalizedGenre in genreCount) {
                 genreCount[capitalizedGenre] = genreCount[capitalizedGenre]+1;

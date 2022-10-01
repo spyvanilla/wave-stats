@@ -12,7 +12,7 @@ import noProfile from '../Assets/Images/no-profile.png';
 function ProfileIntro() {
     const [profile,setProfile] = useState<any>(null);
     const [loading,setLoading] = useState(true);
-    const [withImage,setWithImage] = useState(true); // checks if the user has a profile picture
+    const [withImage,setWithImage] = useState(true); // Checks if the user has a profile picture
 
     const eraseProfile = () => {
         fetch('/api/erase-profile')
