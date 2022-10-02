@@ -5,7 +5,10 @@ import {isMobile} from 'react-device-detect';
 
 import Loading from '../../Components/Loading';
 
+import {toast,ToastContainer} from 'react-toastify';
+
 import './home.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Home({isAuthenticated} : {isAuthenticated: null | boolean}) {
     const [loading,setLoading] = useState(false)
@@ -18,6 +21,13 @@ function Home({isAuthenticated} : {isAuthenticated: null | boolean}) {
         }
         else {
             const code = searchParams.get('code');
+            const error = searchParams.get('error');
+
+            if (error) {
+                searchParams.delete('error');
+                setSearchParams(searchParams);
+                toast.error('There was an error when authenticating your account', {position: "top-center"});
+            }
 
             if (code) {
                 setLoading(true);
@@ -28,7 +38,16 @@ function Home({isAuthenticated} : {isAuthenticated: null | boolean}) {
                     method: 'POST',
                     body: JSON.stringify({code: code})
                 })
-                .then(() => window.location.replace('/profile'))
+                .then(response => response.json())
+                .then((response) => {
+                    if (response.token) {
+                        window.location.replace('/profile');
+                    }
+                    else {
+                        setLoading(false);
+                        toast.error('There was an error when authenticating your account', {position: "top-center"});
+                    }
+                })
             }
         }
     },[isAuthenticated,searchParams,setSearchParams,navigate])
@@ -46,6 +65,7 @@ function Home({isAuthenticated} : {isAuthenticated: null | boolean}) {
                 <h2 className={isMobile === true ? "mobile-appear" : "desktop-appear"}>Analyse your wave status in spotify!</h2>
                 <button className={isMobile === true ? "mobile-appear" : "desktop-appear"} onClick={handleClick}>Get Started</button>
             </div>
+            <ToastContainer position="top-center" />
             </>
         )}
         </>

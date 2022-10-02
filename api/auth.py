@@ -65,7 +65,12 @@ def save_code():
     }
 
     token = requests.post('https://accounts.spotify.com/api/token', data=data).json()
-    session['token'] = token['access_token']
+
+    try:
+        session['token'] = token['access_token']
+    except KeyError: # The code sent by the user is invalid
+        return {'token': False}
+
     session['refresh_token'] = token['refresh_token']
     return {'token': True}
 
