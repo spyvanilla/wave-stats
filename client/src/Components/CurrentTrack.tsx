@@ -2,18 +2,20 @@ import React from 'react';
 import {useState,useEffect} from 'react';
 
 import Loading from './Loading'
+import getCurrentTrack from '../Helpers/getCurrentTrack';
 
 function CurrentTrack() {
     const [currentTrack,setCurrentTrack] = useState<any>(null);
     const [loading,setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/api/get-current-track')
-        .then(response => response.json())
-        .then(data => {
-            setCurrentTrack(data.current_track);
-            setLoading(false);
-        })
+        getCurrentTrack(setCurrentTrack);
+        setLoading(false);
+
+        const getCurrentTrackInterval = setInterval(() => getCurrentTrack(setCurrentTrack), 3000)
+        // Checks if the current track changed every 3 seconds
+
+        return () => clearInterval(getCurrentTrackInterval);
     },[])
 
     return (
