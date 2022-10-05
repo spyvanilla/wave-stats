@@ -27,7 +27,7 @@ def create_app():
     app.config['SESSION_TYPE'] = 'redis'
     app.config['SESSION_REDIS'] = r
 
-    sess.init_app(app) # It's responsible for making requests to a redis instance using default session function in flask
+    sess.init_app(app) # It's responsible for making requests to a redis instance using default session object in flask
     CORS(app)
 
     # The blueprints can only be imported here, else it will throw an circular import error
