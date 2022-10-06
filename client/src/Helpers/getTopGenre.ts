@@ -1,4 +1,4 @@
-const keyGenreWords = ['rock','pop','blues','bossa-nova','emo','jazz','alternative','country','classical','rap'];
+const keyGenreWords = ['rock','pop','blues','bossa-nova','emo','jazz','alternative','country','classical','rap','romantic','mpb'];
 // keyGenreWords is an array of default genres that generate custom waves found in the assets folder,
 // if the user doesn't have any of these in their genres, a generic wave will be displayed
 
@@ -32,6 +32,7 @@ const getTopGenre = (data: any) => {
     sortedGenres.sort((a: any, b: any) => {
         return b[1] - a[1];
     })
+    console.log(sortedGenres);
 
     sortedGenres.forEach((genre: any) => {
         if (topGenre !== null) {
@@ -39,7 +40,7 @@ const getTopGenre = (data: any) => {
         }
 
         keyGenreWords.forEach((keyGenre: string) => {
-            if (genre[0].includes(keyGenre)) {
+            if (genre[0].replace(' ','-').includes(keyGenre)) {
                 topGenre = keyGenre;
                 return;
             }
@@ -63,13 +64,6 @@ const getTopGenre = (data: any) => {
         }
         // This part is responsible for formatting the top genre string
         // to display it in the WaveStats component
-
-        if (firstGenre in genres) {
-            genres[firstGenre] = genres[firstGenre]+1;
-        }
-        else {
-            genres[firstGenre] = 1;
-        }
 
         generic = true;
         topGenre = firstGenre;

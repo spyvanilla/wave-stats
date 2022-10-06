@@ -9,6 +9,7 @@ Welcome to Wave Stats, learn more about your musical preferences!
 <img alt="Wave Stats" src="imgs/wave-stats.png" />
 
 
+
 # Waves Available
 **Waves created using** <a href="haikei.app">haikei.app</a>
 
@@ -41,6 +42,12 @@ Classical Waves
 
 <img alt="Country Waves" src="client/src/Assets/Svg/country-waves.svg" />
 Country Waves
+
+<img alt="Romantic Waves" src="client/src/Assets/Svg/romantic-waves.svg" />
+Romantic Waves
+
+<img alt="Mpb Waves" src="client/src/Assets/Svg/mpb-waves.svg" />
+Mpb Waves
 
 <img alt="Generic Waves" src="client/src/Assets/Svg/generic-waves.svg" />
 Generic Waves

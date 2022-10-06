@@ -34,7 +34,7 @@ function WaveStats() {
             <h2 className="wave-stats-title">Your Wave Stats</h2>
           </section>
           <div className={`genre-wave wave-${generic === true ? 'generic' : genre}`}></div>
-          <h2 className="wave-definition">Your wave is: {(genre.charAt(0).toUpperCase() + genre.slice(1)).replace('-','-')}</h2>
+          <h2 className="wave-definition">Your wave is: {genre.charAt(0).toUpperCase() + genre.slice(1).replace('-',' ')}</h2>
         </section>
       )}
       </>

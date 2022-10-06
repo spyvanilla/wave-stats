@@ -141,6 +141,14 @@
     background-image: url(../../Assets/Svg/rap-waves.svg);
 }
 
+.wave-romantic {
+    background-image: url(../../Assets/Svg/romantic-waves.svg);
+}
+
+.wave-mpb {
+    background-image: url(../../Assets/Svg/mpb-waves.svg);
+}
+
 .wave-generic {
     background-image: url(../../Assets/Svg/generic-waves.svg);
 }
