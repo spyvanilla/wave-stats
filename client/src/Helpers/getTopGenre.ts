@@ -32,7 +32,6 @@ const getTopGenre = (data: any) => {
     sortedGenres.sort((a: any, b: any) => {
         return b[1] - a[1];
     })
-    console.log(sortedGenres);
 
     sortedGenres.forEach((genre: any) => {
         if (topGenre !== null) {
