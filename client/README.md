@@ -41,3 +41,22 @@ function App() {
 ```Python
 @app.route('/add-friends')
 ```
+
+# How to create a new wave
+- You firstly need to associate the wave with a genre key, to do that, you need to search for spotify genre keys, you can do it manually by looking at the genre seeds of your top items <a href="https://developer.spotify.com/console/get-current-user-top-artists-and-tracks/">here</a>
+- After you have gotten the genre key, open <a href="haikei.app" target="_blank">haikei.app</a> and search for the option "Layered Waves"
+- There you should create an wave with darker colors below and clearer colors above, also with these configs:
+
+<img src="../imgs/haikei-wave-config.png" alt="Wave Config" />
+
+- Once you have found a good color palette, download the svg file and name it this way: ```{YOUR GENRE KEY HERE}-waves.svg```, then put the file in the ```Assets/Svg``` directory found in the ```src``` directory
+- After this, go to the ```Helpers``` directory in ```src``` directory and go to the ```getTopGenre.ts``` file, there you assign your genre key in the ```genreKeyWords``` const, this way:
+```Typescript
+const genreKeyWords = [...,'{YOUR GENRE KEY HERE}'];
+```
+- Then go to the ```profile.css``` file in the ```Pages/Profile``` directory, there search for the wave classes, then put your wave class this way:
+```Css
+.wave-{YOUR GENRE KEY HERE} {
+  background-image: url(../../Assets/Svg/{YOUR GENRE KEY HERE}.svg);
+}
+```
