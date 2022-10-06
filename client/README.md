@@ -27,3 +27,17 @@ import AddFriends from './AddFriends/add-friends';
 
 export {...,AddFriends};
 ```
+- Then go back to the ```src``` directory and go to the ```App.tsx``` file, there you add the route for your page:
+```Typescript
+import {...,AddFriends} from './Pages';
+...
+
+function App() {
+  ...
+    <Route path="/add-friends" element={<AddFriends />}></Route>
+}
+```
+- After that, go to the ```app.py``` file in the root directory, there you need to add the new ```add-friends``` route:
+```Python
+@app.route('/add-friends')
+```
