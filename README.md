@@ -10,6 +10,8 @@ Welcome to Wave Stats, learn more about your musical preferences!
 
 
 # Waves Available
+**Waves created using** <a href="haikei.app">haikei.app</a>
+
 <img alt="Rock Waves" src="client/src/Assets/Svg/rock-waves.svg" />
 Rock Waves
 
