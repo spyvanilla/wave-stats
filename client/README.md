@@ -7,6 +7,8 @@
 import {React} from 'react';
 import {useState,useEffect} from 'react'; // this is optional, obviously, but it's just a reminder that these shouldn't be imported in the same line as React class
 
+import './add-friends.css';
+
 function AddFriends() {
   const [something,setSomething] = useState();
   
