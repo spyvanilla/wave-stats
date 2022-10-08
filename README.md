@@ -1,9 +1,6 @@
 # Wave Stats
 Analyse your wave status in spotify!
 
-# Introduction
-Welcome to Wave Stats, learn more about your musical preferences!
-
 
 
 <img alt="Wave Stats" src="imgs/wave-stats.png" />
