@@ -12,7 +12,7 @@ def serve():
     """
     Only works if there's a build folder created in the client side,
     if a new url is added on the client, it needs to be in the app routes
-    like the '/' and '/profile' routes 
+    like the '/' and '/profile' routes
     """
 
     return send_from_directory(app.static_folder, 'index.html')
