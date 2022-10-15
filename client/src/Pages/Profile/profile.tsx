@@ -3,10 +3,8 @@ import {useState,useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 
 import ProfileIntro from '../../Components/ProfileIntro';
-import CurrentTrack from '../../Components/CurrentTrack';
 import WaveStats from '../../Components/WaveStats';
 import GenreIndices from '../../Components/GenreIndices';
-import TopItems from '../../Components/TopItems';
 
 import './profile.css';
 
@@ -27,10 +25,8 @@ function Profile({isAuthenticated, setIsAuthenticated} : {isAuthenticated: null 
         <ProfileIntro setPermissionError={setPermissionError} />
         {permissionError === true || permissionError === null ? '' : (
             <>
-            <CurrentTrack />
             <WaveStats />
             <GenreIndices />
-            <TopItems />
             </>
         )}
         </>

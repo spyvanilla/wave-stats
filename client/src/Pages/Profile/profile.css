@@ -16,6 +16,7 @@
     border-radius: 50%;
     object-fit: cover;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border: solid 6px #fff;
 }
 
 .profile-intro h1 {
@@ -49,31 +50,6 @@
     scale: 1.1;
 }
 
-.current-track {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    flex-direction: column;
-    margin-top: 50px;
-    animation: simpleAppear 1s;
-    transition: linear 0.1s;
-}
-
-.current-track img {
-    width: 200px;
-    height: 200px;
-    border-radius: 10px;
-    object-fit: cover;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    cursor: pointer;
-    transition: linear 0.1s;
-}
-
-.current-track img:hover {
-    scale: 1.1;
-}
-
 .wave-stats {
     position: relative;
     display: flex;
@@ -81,6 +57,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    padding: 20px;
     gap: 12px;
     text-align: center;
 }
@@ -175,50 +152,6 @@
     font-size: 45px;
 }
 
-.favorite-items {
-    margin-top: 300px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    margin-bottom: 50px;
-}
-
-.display-items {
-    display: grid;
-    margin-top: 20px;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-    padding: 15px;
-}
-
-.top-artist-big-image {
-    border-radius: 50%;
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    transition: linear 0.1s;
-    cursor: pointer;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-.top-artist-big-image:hover {
-    scale: 1.1;
-}
-
-.top-track-big-image {
-    border-radius: 10px;
-    width: 200px;
-    height: 200px;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    cursor: pointer;
-    transition: linear 0.1s;
-}
-
-.top-track-big-image:hover {
-    scale: 1.1;
-}
-
 .hidden {
     opacity: 0;
     transition: all 2s;
@@ -241,12 +174,11 @@
     .genre-indices-title {
         font-size: 24px;
     }
-    .top-artist-big-image {
-        width: 120px;
-        height: 120px;
-    }
-    .top-track-big-image {
-        width: 120px;
-        height: 120px;
+}
+
+@media (max-width: 400px) {
+    .profile-intro img {
+        width: 200px;
+        height: 200px;
     }
 }

@@ -29,6 +29,7 @@ function ProfileIntro({setPermissionError} : {setPermissionError: React.Dispatch
             }
 
             else {
+                document.title = `${data.profile.display_name}'s Wave Stats`;
                 setProfile(data.profile);
                 setLoading(false);
 

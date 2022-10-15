@@ -20,21 +20,6 @@ def get_main_info():
     user_profile = requests.get(f'{API_URL}/me', headers={'Authorization': f'Bearer {token}'}).json()
     return {'profile': user_profile}
 
-@profile.route('/get-current-track')
-@cross_origin()
-def get_current_track():
-    token = get_token()
-
-    if token is None:
-        return {'current_track': None}
-
-    try:
-        current_track = requests.get(f'{API_URL}/me/player/currently-playing', headers={'Authorization': f'Bearer {token}'}).json()
-    except Exception: # Spotify api throws a 204 response code
-        return {'current_track': None}
-
-    return {'current_track': current_track}
-
 @profile.route('/get-genres')
 @cross_origin()
 def get_top_artists():
