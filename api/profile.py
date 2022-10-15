@@ -30,15 +30,3 @@ def get_top_artists():
 
     artists = requests.get(f'{API_URL}/me/top/artists?time_range=long_term', headers={'Authorization': f'Bearer {token}'}).json()['items']
     return {'data': artists}
-
-@profile.route('/get-top-items')
-@cross_origin()
-def get_top_items():
-    token = get_token()
-
-    if token is None:
-        return {'items': None}
-
-    artists = requests.get(f'{API_URL}/me/top/artists?time_range=long_term', headers={'Authorization': f'Bearer {token}'}).json()['items']
-    tracks = requests.get(f'{API_URL}/me/tracks?time_range=long_term', headers={'Authorization': f'Bearer {token}'}).json()['items']
-    return {'artists': artists, 'tracks': tracks}
